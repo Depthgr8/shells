@@ -1,0 +1,3 @@
+# Shell script for enlightened users who forgot who they are?
+
+echo -e "\e[1;32m \a Let me tell you, you are \e[m" ------ "\e[1;35m `whoami` \e[m"

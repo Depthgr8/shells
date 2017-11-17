@@ -1,0 +1,5 @@
+# A script that helps memory impaired programmer to find where they are :)
+# It will simply tell you about prsent working directory
+
+echo -e "\e[1;35m \a You are in this directory \e[m" ------ "\e[1;36m `pwd` \e[m"
+echo -e "\e[1;34m \a Tell me, if this reminds you of something?? \e[m"
