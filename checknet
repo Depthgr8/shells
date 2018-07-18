@@ -1,1 +1,4 @@
-ping 8.8.8.8
+ping -a -n 1 8.8.8.8
+ping -n 1 www.google.co.in
+traceroute www.google.co.in
+netstat -s
