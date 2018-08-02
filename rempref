@@ -1,0 +1,12 @@
+# This shell script can be used to remove a prefix from a string
+# Author: Deepak@INMASS
+# Date: July 18, 2018
+
+# "Please use it as shown in this example :"
+# "rempref string-to-remove-from prefix-to-remove"
+
+fullstring="$1" # First argument to rempref command is the fullstring
+prefix="$2" # Second argument is the prefix which is to-be removed
+
+output="${fullstring##$prefix}"
+echo $output # print/return output
