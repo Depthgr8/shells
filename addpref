@@ -1,0 +1,13 @@
+# Shell script to add prefix to all files present in a directory 
+# Date: August 2, 2018
+# Deepak@INMAS
+
+counter=0
+for i in `ls *.*`
+do
+	mv $i $1$i
+	echo "Renaming " $i to $1$i
+	counter=`expr $counter + 1`
+done
+echo "No. of files renamed: " $counter
+
