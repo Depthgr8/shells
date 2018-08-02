@@ -1,4 +1,4 @@
-# This shell script can be used to remove a prefix from a string
+# This shell script can be used to remove a prefix and a suffix from a string
 # Author: Deepak@INMASS
 # Date: July 18, 2018
 

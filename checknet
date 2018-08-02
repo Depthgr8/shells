@@ -1,3 +1,7 @@
+# Shell script which you can use to check whether you are connected to internet or not
+# Author: Deepak@INMASS
+# Date: July 18, 2018
+
 ping -a -n 1 8.8.8.8
 ping -n 1 www.google.co.in
 traceroute www.google.co.in

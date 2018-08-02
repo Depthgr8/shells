@@ -1,4 +1,6 @@
-# Updating system
+# Do fully update your system (clean, update & upgrade)
+# Author: Deepak@INMASS
+# Date: July 18, 2018
 
 apt-get autoclean -y
 apt-get --purge autoremove
