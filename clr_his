@@ -1,0 +1,2 @@
+# Clear the command history
+cat /dev/null > ~/.bash_history && history -c
