@@ -1,0 +1,32 @@
+#!/bin/sh
+# Description: Use this shell script to generate acceptable cluster size for given p-value and alpha-value threshold
+# Author handle: Deepak@INMASS
+# Date: Nov 13,2018
+
+total_files=0
+counter=0
+rm *.txt *.BRIK *.HEAD *.gz 2>/dev/null     # Delete previously processed files
+#3dMean -prefix mean `ls *.nii`  # Generate brain template by averaging, You can also use 3dcalc for this purpose
+#3dAutomask -prefix mask mean+tlrc.BRIK  # Generate a binary mask from brain template
+files=`ls *.nii`  # List all [.nii] files
+for j in $files
+do
+        total_files=`expr $total_files + 1`
+done
+for i in $files   # Do processing for all files
+do
+  counter=`expr $counter + 1`
+  echo "\e[1;32mCalculating FWHM for $i ($counter/$total_files)\e[m"
+  3dFWHMx -acf NULL -mask ../temp_mask+tlrc.BRIK.gz -input $i > abc.txt   # Calculate a,b,c parameters using ACF (spatial autocorrelation function)
+  abc=`sed -n -e 2p abc.txt | cut -c1-27`   # Parse only [a b c] values from the output of 3dFWHMx command | Extract line no. 2 | Extract characters 1 to 27
+  echo "\e[1;36mA B C parameters are : $abc \e[m"        # Display a,b,c parameters on console
+  echo "\e[1;32mCalculating Cluster sizes for $i ($counter/$total_files)\e[m"
+  3dClustSim -ACF $abc -mask ../temp_mask+tlrc.BRIK.gz -pthr 0.001 -athr 0.05 -nodec > clusters.txt # Calculate cluster size for desired p-value and alpha-value threshold
+  clusters=`sed -n -e 36p -e 45p -e 54p clusters.txt | cut -c10-30` # Parse (2-sided & all types of neighbors) only cluster size from the output of 3dFWHMx command | Only lines 36,45 and 54 | then cut 15,16,and 17th characters that represent cluster size
+  touch `echo $i`_clusters.txt              # Create a subject-specific file
+  echo "\e[1;32mNN-1 NN-2 NN-3 cluster sizes are : $clusters \e[m"  # Display the cluster size for all three types of neighbors
+  echo $clusters > `echo $i`_clusters.txt   # Save the cluster size data in subject-specific file
+done
+rm abc.txt clusters.txt # Now delete temporary files
+cat *.txt # Display cluster sizes for all subjects
+

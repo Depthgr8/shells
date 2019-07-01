@@ -1,0 +1,10 @@
+apt install sysvbanner
+apt install git -y
+apt install curl -y
+apt install bison -y
+
+echo $0
+tty
+nano ~/.bashrc
+apt install vlc-bin -y
+

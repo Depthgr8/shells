@@ -1,0 +1,26 @@
+# Shell script to add prefix to all files present in a directory 
+# Date: August 2, 2018
+# Deepak@INMAS
+
+counter=0
+items=0
+
+list="$1"
+pref="$2"
+suff="$3"
+
+for i in $list
+do
+	items=`expr $items + 1`
+done
+echo "Given list contains $items items" 
+
+for i in $list
+do
+	counter=`expr $counter + 1`
+	echo -e "Item no : "$counter"\t | Item name : "$i
+	new_name=$pref$i$suff
+	echo "Renaming $i to $new_name"
+	mv $i $new_name
+done
+

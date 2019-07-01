@@ -1,0 +1,14 @@
+# This shell script can be used to add a prefix and a suffix to a string
+# Author: Deepak@INMASS
+# Date: July 18, 2018
+
+# "Please use it as shown in this example :"
+# "addprefsuf string-to-add prefix-to-add suffix-to-add"
+
+fullstring="$1" # First argument to addprefsuf command is the fullstring
+prefix="$2" # Second argument is the prefix which is to-be added
+suffix="$3" # Third argument is the suffix which is to-be added
+
+output=`echo $prefix$fullstring$suffix`
+echo $output # Print/show output
+

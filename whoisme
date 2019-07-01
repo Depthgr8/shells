@@ -1,5 +1,0 @@
-# Shell script for enlightened users who often forget who they are?
-# Author: Deepak@INMASS
-# Date: July 18, 2018
-
-echo -e "\e[1;32m \a Let me tell you, you are \e[m" ------ "\e[1;35m `whoami` \e[m"
